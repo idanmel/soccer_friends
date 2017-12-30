@@ -4,6 +4,6 @@ browser = webdriver.Firefox()
 browser.get('http://localhost:8000')
 
 try:
-    assert 'jhg' in browser.title
+    assert 'Django' in browser.title
 finally:
     browser.close()
