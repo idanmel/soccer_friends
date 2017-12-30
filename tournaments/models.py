@@ -1,4 +1,6 @@
+from django.core.validators import MinValueValidator
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Tournament(models.Model):
@@ -28,9 +30,21 @@ class Match(models.Model):
     stage = models.ForeignKey(Stage, related_name='matches', on_delete=models.CASCADE)
     home_team = models.ForeignKey(Team, related_name='home_team_matches', on_delete=models.CASCADE)
     away_team = models.ForeignKey(Team, related_name='away_team_matches', on_delete=models.CASCADE)
-    home_goals = models.IntegerField(default=0)
-    away_goals = models.IntegerField(default=0)
+    home_goals = models.IntegerField(default=0, validators=[MinValueValidator(0)])
+    away_goals = models.IntegerField(default=0, validators=[MinValueValidator(0)])
     finished = models.BooleanField(default=False)
 
     def __str__(self):
-        return "{} - {}".format(self.home_team, self.away_team)
+        return "{}: {} - {}".format(self.stage.name, self.home_team, self.away_team)
+
+
+class MatchPrediction(models.Model):
+    friend = models.ForeignKey(User, on_delete=models.CASCADE)
+    match = models.ForeignKey(Match, on_delete=models.CASCADE)
+    home_goals = models.IntegerField(default=0, validators=[MinValueValidator(0)])
+    away_goals = models.IntegerField(default=0, validators=[MinValueValidator(0)])
+
+    def __str__(self):
+        return "{}: {} {} - {} {}".format(self.match.stage.name, self.match.home_team, self.home_goals,
+                                          self.match.away_team, self.away_goals)
+
