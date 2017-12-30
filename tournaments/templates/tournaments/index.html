@@ -5,11 +5,11 @@
     <title>Title</title>
 </head>
 <body>
-{% load static %}
-<img src="{% static "images/Flag_of_Russia.svg" %}" alt="Russia"/>
+<!--{% load static %}-->
+<!--<img src="{% static "images/Flag_of_Russia.svg" %}" alt="Russia"/>-->
 
-{% for tournament in tournaments %}
-    <p>{{ tournament.name }}</p>
+{% for team in teams %}
+    <p>{{ team.name }}</p>
 {% endfor %}
 
 </body>

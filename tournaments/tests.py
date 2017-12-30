@@ -1,5 +1,5 @@
 from django.test import TestCase
-from tournaments.models import Tournament, Stage
+from tournaments.models import Tournament, Stage, Team
 
 
 class StageTestCase(TestCase):
@@ -16,3 +16,11 @@ class StageTestCase(TestCase):
         self.assertEqual(self.group_a.name, "Group A")
         self.assertEqual(self.group_a.tournament.name, "World Cup 2018")
 
+
+class TeamTestCase(TestCase):
+    def setUp(self):
+        Team.objects.create(name="Russia")
+        self.russia = Team.objects.get(name="Russia")
+
+    def test_team_created(self):
+        self.assertEqual(self.russia.name, "Russia")

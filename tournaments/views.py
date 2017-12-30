@@ -1,10 +1,10 @@
 from django.shortcuts import render
 
-from tournaments.models import Tournament
+from tournaments.models import Team
 # Create your views here.
 
 
 def index(request):
-    tournaments = Tournament.objects.all()
-    context = {'tournaments': tournaments}
+    teams = Team.objects.all()
+    context = {'teams': teams}
     return render(request, 'tournaments/index.html', context)
