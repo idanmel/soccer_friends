@@ -44,7 +44,27 @@ class MatchPrediction(models.Model):
     home_goals = models.IntegerField(default=0, validators=[MinValueValidator(0)])
     away_goals = models.IntegerField(default=0, validators=[MinValueValidator(0)])
 
-    def __str__(self):
-        return "{}: {} {} - {} {}".format(self.match.stage.name, self.match.home_team, self.home_goals,
-                                          self.match.away_team, self.away_goals)
+    class Meta:
+        unique_together = ('friend', 'match')
 
+    def __str__(self):
+        return "{}, {}: {} {} - {} {}".format(self.friend.username, self.match.stage.name, self.match.home_team,
+                                              self.home_goals, self.match.away_team, self.away_goals)
+
+
+class StagesScoringRule(models.Model):
+    stage = models.ForeignKey(Stage, on_delete=models.CASCADE)
+    precise = models.PositiveSmallIntegerField(default=0)
+    imprecise = models.PositiveSmallIntegerField(default=0)
+
+    def __str__(self):
+        return "{} scoring rules".format(self.stage.name)
+
+
+class MatchPoint(models.Model):
+    friend = models.ForeignKey(User, on_delete=models.CASCADE)
+    match = models.ForeignKey(Match, on_delete=models.CASCADE)
+    points = models.PositiveSmallIntegerField(default=None)
+
+    def __str__(self):
+        return "{} points for {}".format(self.friend.username, str(self.match))
