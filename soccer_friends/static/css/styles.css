@@ -1,0 +1,34 @@
+.primary-bg-dark {
+    background-color: #00796B;
+}
+
+.primary-bg-light {
+    background-color: #B2DFDB;
+}
+
+.primary-color-light {
+    color: #009688;
+}
+
+.accent-color {
+    background-color: #FF5722;
+    color: #FFFFFF;
+}
+
+body {
+    background-color: #F9F9F9;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #212121;
+}
+
+p {
+    color: #757575;
+}
+
+nav,
+nav a {
+    color: #FFFFFF;
+}
+
