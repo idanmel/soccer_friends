@@ -34,6 +34,9 @@ class Match(models.Model):
     away_goals = models.IntegerField(default=0, validators=[MinValueValidator(0)])
     finished = models.BooleanField(default=False)
 
+    class Meta:
+        unique_together = ('stage', 'home_team', 'away_team')
+
     def __str__(self):
         return "{}: {} - {}".format(self.stage.name, self.home_team, self.away_team)
 

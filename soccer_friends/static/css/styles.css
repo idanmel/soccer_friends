@@ -1,20 +1,3 @@
-.primary-bg-dark {
-    background-color: #00796B;
-}
-
-.primary-bg-light {
-    background-color: #B2DFDB;
-}
-
-.primary-color-light {
-    color: #009688;
-}
-
-.accent-color {
-    background-color: #FF5722;
-    color: #FFFFFF;
-}
-
 body {
     background-color: #F9F9F9;
 }
@@ -27,8 +10,21 @@ p {
     color: #757575;
 }
 
-nav,
-nav a {
-    color: #FFFFFF;
+
+.stage {
+    padding-bottom: 35px;
 }
 
+.match-row {
+    margin-bottom: 3px;
+}
+
+.home-team {
+    width: 90px;
+    display: inline-block;
+}
+
+.away-team {
+    padding-left: 20px;
+    display: inline-block;
+}
