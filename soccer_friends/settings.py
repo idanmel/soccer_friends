@@ -84,10 +84,10 @@ WSGI_APPLICATION = 'soccer_friends.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.environ["ENGINE"],
-        'NAME': os.environ["DB_NAME"],
-        'USER': os.environ["DB_USER"],
-        'PASSWORD': os.environ["DB_PASSWORD"],
+        'ENGINE': os.environ['ENGINE'],
+        'NAME': os.environ['DB_NAME'],
+        'USER': os.environ['DB_USER'],
+        'PASSWORD': os.environ['DB_PASSWORD'],
         'HOST': os.environ["DATABASE_URL"],
         'PORT': '',
     }
