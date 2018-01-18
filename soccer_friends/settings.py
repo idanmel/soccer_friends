@@ -88,7 +88,7 @@ DATABASES = {
         'NAME': os.environ['DB_NAME'],
         'USER': os.environ['DB_USER'],
         'PASSWORD': os.environ['DB_PASSWORD'],
-        'HOST': os.environ["DATABASE_URL"],
+        'HOST': os.environ['DATABASE_URL'],
         'PORT': '',
     }
 }
@@ -118,7 +118,10 @@ USE_L10N = True
 USE_TZ = True
 
 # Change 'default' database configuration with $DATABASE_URL.
-DATABASES['default'].update(dj_database_url.config(conn_max_age=500))
+try:
+    DATABASES['default'].update(dj_database_url.config(conn_max_age=500))
+except KeyError:
+    pass
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
