@@ -29,5 +29,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include(router.urls)),
     url('^tournaments/(?P<pk>[0-9]+)/matches/$', views.MatchesList.as_view()),
+    url('^match-predictions/$', views.match_predictions),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

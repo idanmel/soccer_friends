@@ -28,8 +28,8 @@ class Team(models.Model):
 
 class Match(models.Model):
     stage = models.ForeignKey(Stage, related_name='matches', on_delete=models.CASCADE)
-    home_team = models.ForeignKey(Team, related_name='home_team_matches', on_delete=models.CASCADE)
-    away_team = models.ForeignKey(Team, related_name='away_team_matches', on_delete=models.CASCADE)
+    home_team = models.ForeignKey(Team, related_name='home_team_matches', on_delete=models.CASCADE, null=True, blank=True)
+    away_team = models.ForeignKey(Team, related_name='away_team_matches', on_delete=models.CASCADE, null=True, blank=True)
     home_goals = models.IntegerField(default=0, validators=[MinValueValidator(0)])
     away_goals = models.IntegerField(default=0, validators=[MinValueValidator(0)])
     finished = models.BooleanField(default=False)
