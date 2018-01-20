@@ -18,7 +18,7 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 class TeamSerializer(serializers.ModelSerializer):
     class Meta:
         model = Team
-        fields = ('name',)
+        fields = ('name', 'id')
 
 
 class StageSerializer(serializers.ModelSerializer):
@@ -26,7 +26,7 @@ class StageSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Stage
-        fields = ('name',)
+        fields = ('name', 'id')
 
 
 class MatchSerializer(serializers.ModelSerializer):

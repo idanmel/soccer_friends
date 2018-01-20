@@ -24,12 +24,6 @@ class MatchesList(generics.ListAPIView):
         return Match.objects.filter(stage__tournament=pk)
 
 
-class MatchesPredictions(generics.ListCreateAPIView):
-    """
-    API endpoint to save match predictions
-    """
-
-
 @api_view(['POST'])
 def match_predictions(request):
     if request.method == 'POST':
