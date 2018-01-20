@@ -28,8 +28,10 @@ class Team(models.Model):
 
 class Match(models.Model):
     stage = models.ForeignKey(Stage, related_name='matches', on_delete=models.CASCADE)
-    home_team = models.ForeignKey(Team, related_name='home_team_matches', on_delete=models.CASCADE, null=True, blank=True)
-    away_team = models.ForeignKey(Team, related_name='away_team_matches', on_delete=models.CASCADE, null=True, blank=True)
+    home_team = models.ForeignKey(Team, related_name='home_team_matches', on_delete=models.CASCADE, null=True,
+                                  blank=True)
+    away_team = models.ForeignKey(Team, related_name='away_team_matches', on_delete=models.CASCADE, null=True,
+                                  blank=True)
     home_goals = models.IntegerField(default=0, validators=[MinValueValidator(0)])
     away_goals = models.IntegerField(default=0, validators=[MinValueValidator(0)])
     finished = models.BooleanField(default=False)
@@ -44,6 +46,10 @@ class Match(models.Model):
 class MatchPrediction(models.Model):
     friend = models.ForeignKey(User, on_delete=models.CASCADE)
     match = models.ForeignKey(Match, on_delete=models.CASCADE)
+    home_team = models.ForeignKey(Team, related_name='home_team_match_predictions', on_delete=models.CASCADE, null=True,
+                                  blank=True)
+    away_team = models.ForeignKey(Team, related_name='away_team_match_predictions', on_delete=models.CASCADE, null=True,
+                                  blank=True)
     home_goals = models.IntegerField(default=0, validators=[MinValueValidator(0)])
     away_goals = models.IntegerField(default=0, validators=[MinValueValidator(0)])
 
@@ -51,8 +57,8 @@ class MatchPrediction(models.Model):
         unique_together = ('friend', 'match')
 
     def __str__(self):
-        return "{}, {}: {} {} - {} {}".format(self.friend.username, self.match.stage.name, self.match.home_team,
-                                              self.home_goals, self.match.away_team, self.away_goals)
+        return "{}, {}: {} {} - {} {}".format(self.friend.username, self.match.stage.name, self.home_team,
+                                              self.home_goals, self.away_team, self.away_goals)
 
 
 class StagesScoringRule(models.Model):
