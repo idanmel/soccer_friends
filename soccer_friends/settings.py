@@ -115,7 +115,9 @@ AUTH_PASSWORD_VALIDATORS = [
 CORS_ORIGIN_WHITELIST = (
     'localhost:8080',
     '127.0.0.1:8080',
-    'https://soccer-friends-frontend.herokuapp.com'
+    'localhost:5000',
+    '127.0.0.1:5000',
+    'soccer-friends-frontend.herokuapp.com',
 )
 
 # Internationalization
