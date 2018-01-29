@@ -46,10 +46,12 @@ class Match(models.Model):
 class MatchPrediction(models.Model):
     friend = models.ForeignKey(User, on_delete=models.CASCADE)
     match = models.ForeignKey(Match, on_delete=models.CASCADE)
-    home_team = models.ForeignKey(Team, related_name='home_team_match_predictions', on_delete=models.CASCADE, null=True,
-                                  blank=True)
-    away_team = models.ForeignKey(Team, related_name='away_team_match_predictions', on_delete=models.CASCADE, null=True,
-                                  blank=True)
+    home_team = models.ForeignKey(
+        Team, related_name='home_team_match_predictions', on_delete=models.CASCADE, null=True, blank=True
+    )
+    away_team = models.ForeignKey(
+        Team, related_name='away_team_match_predictions', on_delete=models.CASCADE, null=True, blank=True
+    )
     home_goals = models.IntegerField(default=0, validators=[MinValueValidator(0)])
     away_goals = models.IntegerField(default=0, validators=[MinValueValidator(0)])
 
