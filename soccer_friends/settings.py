@@ -117,6 +117,8 @@ CORS_ORIGIN_WHITELIST = (
     '127.0.0.1:8080',
     'localhost:5000',
     '127.0.0.1:5000',
+    '127.0.0.1:3000',
+    'localhost:3000',
     'soccer-friends-frontend.herokuapp.com',
 )
 
