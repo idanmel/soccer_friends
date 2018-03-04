@@ -14,6 +14,8 @@ class Stage(models.Model):
     tournament = models.ForeignKey(Tournament, related_name='stages', on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     abbv = models.CharField(max_length=255, null=True, blank=True)
+    first_place_leads_to = models.ForeignKey('self', null=True, blank=True, default=None, related_name='first_place_from')
+    second_place_leads_to = models.ForeignKey('self', null=True, blank=True, default=None, related_name='second_place_from')
 
     def __str__(self):
         return self.name
@@ -21,6 +23,7 @@ class Stage(models.Model):
 
 class Team(models.Model):
     name = models.CharField(max_length=255, unique=True)
+    flag = models.CharField(max_length=255, null=True, blank=True, default="")
 
     def __str__(self):
         return self.name

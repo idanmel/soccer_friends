@@ -1,6 +1,6 @@
-from .models import Match, Tournament, User, MatchPrediction, Team
+from .models import Match, Tournament, User, MatchPrediction, Team, Stage
 from rest_framework import viewsets, generics
-from .serializers import MatchSerializer, TournamentSerializer
+from .serializers import MatchSerializer, TournamentSerializer, StageSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
@@ -15,13 +15,24 @@ class TournamentViewSet(viewsets.ReadOnlyModelViewSet):
 
 class MatchesList(generics.ListAPIView):
     """
-    API endpoint that shows all the matches in a specific tournament
+    API endpoint that shows all the matches in a specific tournament by group
     """
     serializer_class = MatchSerializer
 
     def get_queryset(self):
         pk = int(self.kwargs['pk'])
         return Match.objects.filter(stage__tournament=pk)
+
+
+class StagesList(generics.ListAPIView):
+    """
+    API endpoint that shows all the matches in a specific tournament by group
+    """
+    serializer_class = StageSerializer
+
+    def get_queryset(self):
+        pk = int(self.kwargs['pk'])
+        return Stage.objects.filter(tournament=pk)
 
 
 @api_view(['POST'])
