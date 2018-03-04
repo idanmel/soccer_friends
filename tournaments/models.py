@@ -37,6 +37,7 @@ class Match(models.Model):
                                   blank=True)
     home_goals = models.IntegerField(default=0, validators=[MinValueValidator(0)])
     away_goals = models.IntegerField(default=0, validators=[MinValueValidator(0)])
+    start_time = models.DateTimeField(default=None, blank=True, null=True)
     finished = models.BooleanField(default=False)
 
     class Meta:
