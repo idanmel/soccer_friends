@@ -35,8 +35,8 @@ class Match(models.Model):
                                   blank=True)
     away_team = models.ForeignKey(Team, related_name='away_team_matches', on_delete=models.CASCADE, null=True,
                                   blank=True)
-    home_goals = models.IntegerField(default=0, validators=[MinValueValidator(0)])
-    away_goals = models.IntegerField(default=0, validators=[MinValueValidator(0)])
+    home_goals = models.IntegerField(null=True, blank=True)
+    away_goals = models.IntegerField(null=True, blank=True)
     start_time = models.DateTimeField(default=None, blank=True, null=True)
     finished = models.BooleanField(default=False)
 
