@@ -120,7 +120,7 @@ CORS_ORIGIN_WHITELIST = (
     '127.0.0.1:3000',
     'localhost:3000',
     'soccer-friends-frontend.herokuapp.com',
-    'still-harbor-26509.herokuapp.com',
+    'hahimur-nuxt.herokuapp.com/',
 )
 
 # Internationalization
