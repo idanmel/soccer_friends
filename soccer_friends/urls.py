@@ -18,6 +18,7 @@ from django.conf.urls import url, include
 from rest_framework import routers
 from tournaments import views
 from django.contrib import admin
+from rest_framework_jwt.views import obtain_jwt_token
 
 
 router = routers.DefaultRouter()
@@ -28,6 +29,7 @@ router.register(r'tournaments', views.TournamentViewSet)
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include(router.urls)),
+    url(r'^api-token-auth/', obtain_jwt_token),
     url('^tournaments/(?P<pk>[0-9]+)/matches/$', views.MatchesList.as_view()),
     url('^tournaments/(?P<pk>[0-9]+)/stages/$', views.StagesList.as_view()),
     url('^match-predictions/$', views.match_predictions),
